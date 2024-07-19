@@ -11,7 +11,7 @@
   <link rel="manifest" href="Icons/site.webmanifest">
 </head>
 <body>
-  <header>
+  <header class="collapsed">
     <nav>
       <ul>
         <li><a href="#Ulthwé"> Ulthwé</a></li>
@@ -334,6 +334,58 @@
   </footer>
 
   <script src="zoomImages.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('header');
+    const navToggle = document.createElement('div');
+    navToggle.className = 'nav-toggle';
+    navToggle.innerHTML = '&#9776;'; // Unicode for the hamburger icon
+    header.insertBefore(navToggle, header.firstChild);
+
+    // Toggle the navigation menu on click
+    navToggle.addEventListener('click', function () {
+        // Toggle menu visibility
+        if (header.classList.contains('collapsed')) {
+            header.classList.remove('collapsed');
+            header.classList.add('expanded');
+        } else {
+            header.classList.remove('expanded');
+            header.classList.add('collapsed');
+        }
+    });
+
+    // Show the navigation menu on hover
+    header.addEventListener('mouseover', function () {
+        if (!header.classList.contains('expanded')) {
+            header.classList.add('expanded');
+            header.classList.remove('collapsed');
+        }
+    });
+
+    // Hide the navigation menu when not hovering over the header or navToggle
+    header.addEventListener('mouseout', function (event) {
+        // Check if the mouse has left the header and navToggle
+        if (!header.contains(event.relatedTarget) && !navToggle.contains(event.relatedTarget)) {
+            header.classList.remove('expanded');
+            header.classList.add('collapsed');
+        }
+    });
+
+    // Hide the expanded menu when clicking on a navigation link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            if (header.classList.contains('expanded')) {
+                header.classList.remove('expanded');
+                header.classList.add('collapsed');
+            }
+        });
+    });
+});
+
+
+</script>
 
 </body>
 </html>
