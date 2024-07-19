@@ -75,7 +75,7 @@ main {
   align-items: center;
   padding: 2%;
   font-size: 1rem;
-  margin-top: 4rem; /* Adjust according to the header height */
+  margin-top: 1rem; /* Adjust according to the header height */
 }
 
 .gallery-container {
@@ -112,7 +112,7 @@ footer {
 }
 
 .section-header {
-  margin-top: 5%;
+  margin-top: 1%;
   border-bottom: 5px solid black;
   width: 100%;
 }
