@@ -110,12 +110,6 @@ main {
   width: 100%;
 }
 
-.cover_full_image {
-  width: 100%; 
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .logo_container {
   display: flex;
   align-items: center;
@@ -130,6 +124,16 @@ main {
   align-items: flex-start;
   justify-content: center;
   flex: 2;
+}
+
+/* url logos solve the issue wiht _ on whitespaces*/
+.url_logos {
+  font-size: 0;
+}
+
+.url_logos a {
+  font-size: initial;
+  display: inline-block;
 }
 
 footer {
@@ -162,27 +166,34 @@ h1 {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.5rem;
-  
 }
+
 .icon_title {
-  width: 60%;
+  width: 10rem;
   height: auto;
-  
 }
 
 .cover {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  width:100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  box-sizing: border-box;
 }
+
+.cover_item {
+  flex: 1 1 calc((100% - 6rem) / 7);
+  max-width: calc((100% - 6rem) / 7);
+}
+
 .cover_image {
-  width: calc((100% - 6rem) / 7);
-  height: 100%;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 1rem;
 }
-
 
 @media (max-width: 1200px) {
   body {
