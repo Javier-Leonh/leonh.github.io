@@ -126,8 +126,16 @@ main {
   flex: 2;
 }
 
+.inline-div-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; 
+  flex-wrap: wrap;
+}
+
 .inline-div {
-  display: inline;
+  display: inline-block; 
 }
 
 /* url logos solve the issue wiht _ on whitespaces*/
@@ -291,5 +299,11 @@ h1 {
 
   h1 {
       font-size: 2.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .inline-div-container {
+    flex-direction: column; /* Stack the divs vertically */
   }
 }

@@ -42,10 +42,10 @@
     <div class="title_container">
       <h1>Javier Leonh.Art</h1>
     </div>
-    <p>
-      <span id="paintedCount" class="inline-div">  »Painted Models: Loading...</span>
-      <span id="currentProject" class="inline-div">  »WIP: Loading...</span>
-    </p>
+    <div class="inline-div-container">
+      <span id="paintedCount" class="inline-div">✅ Painted Models: Loading...</span>
+      <span id="currentProject" class="inline-div">🎨 WIP: Loading...</span>
+    </div>
 
     <div class="cover">
       <div class="cover_item">
@@ -158,13 +158,13 @@
           var currentProject = worksheet['H5'].v;
 
           // Update the corresponding span elements
-          document.getElementById('paintedCount').innerText = '»Painted Models: ' + String(paintedCount);
-          document.getElementById('currentProject').innerText = '  »WIP: ' + String(currentProject);
+          document.getElementById('paintedCount').innerText = '✅ Painted Models: ' + String(paintedCount);
+          document.getElementById('currentProject').innerText = '🎨 WIP: ' + String(currentProject);
         })
         .catch(error => {
           console.error('Error fetching or parsing the Excel file:', error);
-          document.getElementById('paintedCount').innerText = '  » Error loading data';
-          document.getElementById('currentProject').innerText = '  » Error loading data';
+          document.getElementById('paintedCount').innerText = '✅ Error loading data';
+          document.getElementById('currentProject').innerText = '🎨 Error loading data';
         });
     });
   </script>
