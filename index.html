@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="Icons/icon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="Icons/icon.png">
   <link rel="manifest" href="Icons/site.webmanifest">
-</head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <body>
   <header class="collapsed">
     <nav>
@@ -42,6 +42,10 @@
     <div class="title_container">
       <h1>Javier Leonh.Art</h1>
     </div>
+    <p>» Elven & Eldar fan since 2000 » Mini Painter since 2019  <div>
+      <div id="paintedCount">Total Painted Models: Loading...</div>
+      </div>
+    </p>
 
     <div class="cover">
       <div class="cover_item">
@@ -143,10 +147,25 @@
             }
         });
     });
-});
+    
+    // Fetch and display data from the Excel file
+      fetch('Painting Record.xlsx')
+        .then(response => response.arrayBuffer())
+        .then(data => {
+          var workbook = XLSX.read(data, { type: 'array' });
+          var sheetName = workbook.SheetNames[0];
+          var worksheet = workbook.Sheets[sheetName];
+          var cellAddress = 'H2'; // Adjust based on your file
+          var cellValue = worksheet[cellAddress].v;
+          document.getElementById('paintedCount').innerText = 'Total Painted Models: ' + String(cellValue);
+        })
+        .catch(error => {
+          console.error('Error fetching or parsing the Excel file:', error);
+          document.getElementById('paintedCount').innerText = 'Error loading data.';
+        });
+    });
 
-
-</script>
+  </script>
 
 </body>
 </html>
