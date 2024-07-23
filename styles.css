@@ -126,6 +126,10 @@ main {
   flex: 2;
 }
 
+.inline-div {
+  display: inline;
+}
+
 /* url logos solve the issue wiht _ on whitespaces*/
 .url_logos {
   font-size: 0;

@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="Icons/icon.png">
   <link rel="manifest" href="Icons/site.webmanifest">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
 <body>
   <header class="collapsed">
     <nav>
@@ -26,25 +27,25 @@
     </nav>
   </header>
   <main>
-    
     <div class="title_links_container">
-        <div class="url_logos">
-            <a href="https://www.instagram.com/javier_leonh.art" target="_blank">
-              <img class="icon_link" src="Icons/logo_instagram.png" alt="Instagram">
-            </a>
-            <img class="icon_title" src="Icons/logo_round.png" alt="Avatar">
-            <a href="https://www.facebook.com/Javier.Leonh" target="_blank">
-              <img class="icon_link" src="Icons/logo_facebook.png" alt="Facebook">
-            </a>
-        </div>
+      <div class="url_logos">
+        <a href="https://www.instagram.com/javier_leonh.art" target="_blank">
+          <img class="icon_link" src="Icons/logo_instagram.png" alt="Instagram">
+        </a>
+        <img class="icon_title" src="Icons/logo_round.png" alt="Avatar">
+        <a href="https://www.facebook.com/Javier.Leonh" target="_blank">
+          <img class="icon_link" src="Icons/logo_facebook.png" alt="Facebook">
+        </a>
+      </div>
     </div>
 
     <div class="title_container">
       <h1>Javier Leonh.Art</h1>
     </div>
-    <p>» Elven & Eldar fan since 2000 » Mini Painter since 2019  <div>
-      <div id="paintedCount">Total Painted Models: Loading...</div>
-      </div>
+    <p>
+      » Mini Painter since 2019 
+      <span id="paintedCount" class="inline-div">  » Total Painted Models: Loading...</span>
+      <span id="currentProject" class="inline-div">  » Working on: Loading...</span>
     </p>
 
     <div class="cover">
@@ -91,81 +92,82 @@
         </a>
       </div>
     </div>
-
-
   </main>
   <footer>
     <p>&copy; 2024 Javier LeonhArt Gallery</p>
   </footer>
 
   <script src="zoomImages.js"></script>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-    const header = document.querySelector('header');
-    const navToggle = document.createElement('div');
-    navToggle.className = 'nav-toggle';
-    navToggle.innerHTML = '&#9776;'; // Unicode for the hamburger icon
-    header.insertBefore(navToggle, header.firstChild);
+      const header = document.querySelector('header');
+      const navToggle = document.createElement('div');
+      navToggle.className = 'nav-toggle';
+      navToggle.innerHTML = '&#9776;'; // Unicode for the hamburger icon
+      header.insertBefore(navToggle, header.firstChild);
 
-    // Toggle the navigation menu on click
-    navToggle.addEventListener('click', function () {
+      // Toggle the navigation menu on click
+      navToggle.addEventListener('click', function () {
         // Toggle menu visibility
         if (header.classList.contains('collapsed')) {
-            header.classList.remove('collapsed');
-            header.classList.add('expanded');
+          header.classList.remove('collapsed');
+          header.classList.add('expanded');
         } else {
-            header.classList.remove('expanded');
-            header.classList.add('collapsed');
+          header.classList.remove('expanded');
+          header.classList.add('collapsed');
         }
-    });
+      });
 
-    // Show the navigation menu on hover
-    header.addEventListener('mouseover', function () {
+      // Show the navigation menu on hover
+      header.addEventListener('mouseover', function () {
         if (!header.classList.contains('expanded')) {
-            header.classList.add('expanded');
-            header.classList.remove('collapsed');
+          header.classList.add('expanded');
+          header.classList.remove('collapsed');
         }
-    });
+      });
 
-    // Hide the navigation menu when not hovering over the header or navToggle
-    header.addEventListener('mouseout', function (event) {
+      // Hide the navigation menu when not hovering over the header or navToggle
+      header.addEventListener('mouseout', function (event) {
         // Check if the mouse has left the header and navToggle
         if (!header.contains(event.relatedTarget) && !navToggle.contains(event.relatedTarget)) {
+          header.classList.remove('expanded');
+          header.classList.add('collapsed');
+        }
+      });
+
+      // Hide the expanded menu when clicking on a navigation link
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+          if (header.classList.contains('expanded')) {
             header.classList.remove('expanded');
             header.classList.add('collapsed');
-        }
-    });
-
-    // Hide the expanded menu when clicking on a navigation link
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            if (header.classList.contains('expanded')) {
-                header.classList.remove('expanded');
-                header.classList.add('collapsed');
-            }
+          }
         });
-    });
-    
-    // Fetch and display data from the Excel file
+      });
+
+      // Fetch and display data from the Excel file
       fetch('Painting Record.xlsx')
         .then(response => response.arrayBuffer())
         .then(data => {
           var workbook = XLSX.read(data, { type: 'array' });
           var sheetName = workbook.SheetNames[0];
           var worksheet = workbook.Sheets[sheetName];
-          var cellAddress = 'H2'; // Adjust based on your file
-          var cellValue = worksheet[cellAddress].v;
-          document.getElementById('paintedCount').innerText = 'Total Painted Models: ' + String(cellValue);
+
+          // Fetch data from specific cells
+          var paintedCount = worksheet['H2'].v;
+          var currentProject = worksheet['H5'].v;
+
+          // Update the corresponding span elements
+          document.getElementById('paintedCount').innerText = '  » Total Painted Models: ' + String(paintedCount);
+          document.getElementById('currentProject').innerText = '  » Working on: ' + String(currentProject);
         })
         .catch(error => {
           console.error('Error fetching or parsing the Excel file:', error);
-          document.getElementById('paintedCount').innerText = 'Error loading data.';
+          document.getElementById('paintedCount').innerText = '  » Error loading data';
+          document.getElementById('currentProject').innerText = '  » Error loading data';
         });
     });
-
   </script>
-
 </body>
 </html>
