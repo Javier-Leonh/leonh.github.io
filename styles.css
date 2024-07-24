@@ -136,6 +136,7 @@ main {
 
 .inline-div {
   display: inline-block; 
+  font-size: 1rem;
 }
 
 /* url logos solve the issue wiht _ on whitespaces*/
