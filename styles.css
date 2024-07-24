@@ -331,8 +331,8 @@ h1 {
     justify-content: center;
   }
   .cover_item {
-    flex: 1 1 calc((100% - 0.5rem) / 2);
-    max-width: calc((100% - 0.5rem) / 2);
+    flex: 1 1 calc((100% - 0.5rem) / 3);
+    max-width: calc((100% - 0.5rem) / 3);
     margin-bottom: 1rem;
     margin-bottom: 1rem;
   }
