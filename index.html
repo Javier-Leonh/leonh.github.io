@@ -48,11 +48,11 @@
     </div>
 
     <div class="inline-div-container">
-      <span id="mostUsed" class="inline-div">⭐ Most Used Paints: Loading...</span>
+      <span id="mostUsed" class="inline-divSmall">⭐ Most Used: Loading...</span>
     </div>
 
     <div class="inline-div-container">
-      <span id="mustHave" class="inline-div">📌 My Must-Have Paints: Loading...</span>
+      <span id="mustHave" class="inline-divSmall">📌 My Must-Have: Loading...</span>
     </div>
 
     <div class="cover">
@@ -182,8 +182,8 @@
           // Update the corresponding span elements
           document.getElementById('paintedCount').innerText = '✅ Painted Models: ' + String(paintedCount);
           document.getElementById('currentProject').innerText = '🎨 WIP: ' + String(currentProject) + '.';
-          document.getElementById('mostUsed').innerText= '⭐ Most Used Paints: ' + String(mostTop5) + '.';
-          document.getElementById('mustHave').innerText= '📌 My Must-Have Paints: ' + String(mustHave) + '.';
+          document.getElementById('mostUsed').innerText= '⭐ Most Used: ' + String(mostTop5) + '.';
+          document.getElementById('mustHave').innerText= '📌 My Must-Have: ' + String(mustHave) + '.';
         })
         .catch(error => {
           console.error('Error fetching or parsing the Excel file:', error);
