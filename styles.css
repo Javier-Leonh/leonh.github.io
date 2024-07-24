@@ -272,8 +272,8 @@ h1 {
   }
 
   .inline-div-container {
-    flex-direction: row; /* Display divs horizontally */
-    gap: 1rem; /* Increase the gap between divs */
+    flex-direction: row; 
+    gap: 1rem; 
   }
   .cover {
     flex-wrap: wrap;
@@ -282,13 +282,13 @@ h1 {
   .cover_item {
     flex: 1 1 calc((100% - 2rem) / 3);
     max-width: calc((100% - 2rem) / 3);
-    margin-bottom: 2rem; /* Increase the margin between items */
+    margin-bottom: 2rem; 
   }
   .cover_image {
     width: 100%;
-    height: 250px; /* Increase the image height */
+    height: auto;
     object-fit: cover;
-    border-radius: 1rem; /* Increase the border radius */
+    border-radius: 1rem; 
   }
 }
 
@@ -297,8 +297,8 @@ h1 {
     font-size: 1.5vw;
   }
   .inline-div-container {
-    flex-direction: row; /* Display divs horizontally */
-    gap: 1rem; /* Increase the gap between divs */
+    flex-direction: row; 
+    gap: 1rem; 
   }
   .cover {
     flex-wrap: wrap;
@@ -307,13 +307,13 @@ h1 {
   .cover_item {
     flex: 1 1 calc((100% - 2rem) / 2);
     max-width: calc((100% - 2rem) / 2);
-    margin-bottom: 1.5rem; /* Increase the margin between items */
+    margin-bottom: 1.5rem;
   }
   .cover_image {
     width: 100%;
-    height: 200px; /* Set a fixed height for the image */
+    height: auto;
     object-fit: cover;
-    border-radius: 1rem; /* Increase the border radius */
+    border-radius: 1rem;
   }
 
   nav ul {
@@ -339,8 +339,8 @@ h1 {
     font-size: 0.7rem;
   }
   .inline-div-container {
-    flex-direction: column; /* Stack the divs vertically */
-    gap: 0.5rem; /* Reduce the gap between divs */
+    flex-direction: column; 
+    gap: 0.5rem; 
   }
   .cover {
     flex-wrap: wrap;
@@ -349,13 +349,13 @@ h1 {
   .cover_item {
     flex: 1 1 100%;
     max-width: 100%;
-    margin-bottom: 1rem; /* Add some margin between items */
+    margin-bottom: 1rem; 
   }
   .cover_image {
     width: 100%;
-    height: 150px; /* Set a fixed height for the image */
+    height: auto;
     object-fit: cover;
-    border-radius: 0.5rem; /* Reduce the border radius */
+    border-radius: 0.5rem; 
   }
 
   .section-header h2 {
@@ -369,6 +369,6 @@ h1 {
 
 @media (max-width: 600px) {
   .inline-div-container {
-    flex-direction: column; /* Stack the divs vertically */
+    flex-direction: column; 
   }
 }
