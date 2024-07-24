@@ -47,6 +47,14 @@
       <span id="currentProject" class="inline-div">🎨 WIP: Loading...</span>
     </div>
 
+    <div class="inline-div-container">
+      <span id="mostUsed" class="inline-div">⭐ Most Used Paints: Loading...</span>
+    </div>
+
+    <div class="inline-div-container">
+      <span id="mustHave" class="inline-div">📌 My Must-Have Paints: Loading...</span>
+    </div>
+
     <div class="cover">
       <div class="cover_item">
         <a href="High-Elves.html">
@@ -157,14 +165,35 @@
           var paintedCount = worksheet['H2'].v;
           var currentProject = worksheet['H5'].v;
 
+          var mostUsed1 = worksheet['H7'].v;
+          var mostUsed2 = worksheet['H8'].v;
+          var mostUsed3 = worksheet['H9'].v;
+          var mostUsed4 = worksheet['H10'].v;
+          var mostUsed5 = worksheet['H11'].v;
+          var mostTop5 = [mostUsed1, mostUsed2, mostUsed3, mostUsed4, mostUsed5].join(', ');
+
+          var must1 = worksheet['H19'].v;
+          var must2 = worksheet['H20'].v;
+          var must3 = worksheet['H21'].v;
+          var must4 = worksheet['H22'].v;
+          var must5 = worksheet['H23'].v;
+          var must6 = worksheet['H24'].v;
+          var must7 = worksheet['H25'].v;
+          var must8 = worksheet['H26'].v;
+          var mustHave = [must1, must2, must3, must4, must5, must6, must6, must7, must8],join(', ');
+
           // Update the corresponding span elements
           document.getElementById('paintedCount').innerText = '✅ Painted Models: ' + String(paintedCount);
           document.getElementById('currentProject').innerText = '🎨 WIP: ' + String(currentProject);
+          document.getElementById('mostUsed').innerText= '⭐ Most Used Paints: ' + String(mostTop5);
+          document.getElementById('mustHave').innerText= '📌 My Must-Have Paints: ' + String(mustHave);
         })
         .catch(error => {
           console.error('Error fetching or parsing the Excel file:', error);
           document.getElementById('paintedCount').innerText = '✅ Error loading data';
           document.getElementById('currentProject').innerText = '🎨 Error loading data';
+          document.getElementById('mostUsed').innerText = '⭐ Error loading data';
+          document.getElementById('mustHave').innerText = '📌 Error loading data';
         });
     });
   </script>
