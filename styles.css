@@ -142,7 +142,7 @@ main {
 
 .inline-divSmall {
   display: inline-block; 
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 /* url logos solve the issue wiht _ on whitespaces*/
@@ -243,7 +243,7 @@ h1 {
   }
 
   .inline-divSmall {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
 
   .cover {
@@ -284,7 +284,7 @@ h1 {
   }
 
   .inline-divSmall {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
 
   .cover {
@@ -334,7 +334,7 @@ h1 {
   }
 
   .inline-divSmall {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
 
   .cover {
@@ -349,7 +349,7 @@ h1 {
   }
 
   .cover_image {
-    width: 50%;
+    width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 0.5rem; 
