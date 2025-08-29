@@ -26,7 +26,7 @@ header.expanded {
 }
 
 header.collapsed {
-  height: 1rem; 
+  height: 1rem;
   font-size: 0.5rem;
 }
 
@@ -59,7 +59,7 @@ nav a {
 
 .nav-toggle {
   cursor: pointer;
-  font-size: 0.5rem; 
+  font-size: 0.5rem;
   line-height: 1rem;
   transition: font-size 0.3s, line-height 0.3s;
 }
@@ -75,7 +75,7 @@ main {
   align-items: center;
   padding: 2%;
   font-size: 1rem;
-  margin-top: 1rem; /* Adjust according to the header height */
+  margin-top: 1rem;
 }
 
 .gallery-container {
@@ -129,22 +129,21 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; 
+  gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
 
 .inline-div {
-  display: inline-block; 
+  display: inline-block;
   font-size: 1.2rem;
 }
 
 .inline-divSmall {
-  display: inline-block; 
+  display: inline-block;
   font-size: 1rem;
 }
 
-/* url logos solve the issue wiht _ on whitespaces*/
 .url_logos {
   font-size: 0;
 }
@@ -190,11 +189,13 @@ h1 {
   width: 10rem;
   height: auto;
 }
-
+ 
+/* -------- COVER GALLERY -------- */
 .cover {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;  /* center the row */
+  gap: 0.25rem;             /* small spacing */
   width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -202,8 +203,9 @@ h1 {
 }
 
 .cover_item {
-  flex: 1 1 calc((100% - 6rem) / 6);
-  max-width: calc((100% - 6rem) / 6);
+  flex: 1 1 16%;    /* 6 across on large screens */
+  max-width: 16%;
+  box-sizing: border-box;
 }
 
 .cover_image {
@@ -221,7 +223,36 @@ h1 {
   text-decoration: solid;
 }
 
-/* Media code for smaller screens */
+/* Tablet: 4 across */
+@media (max-width: 768px) {
+  .cover_item {
+    flex: 1 1 25%;
+    max-width: 25%;
+  }
+}
+
+/* Small mobile: 2 across */
+@media (max-width: 480px) {
+  .cover_item {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+
+  .cover_image {
+    border-radius: 0.5rem;
+  }
+}
+
+/* Extra small: full width */
+@media (max-width: 360px) {
+  .cover_item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* -------- MEDIA QUERIES -------- */
 
 @media (min-width: 768px) and (max-width: 1200px) {
   body {
@@ -237,30 +268,17 @@ h1 {
   }
 
   .inline-div-container {
-    flex-direction: row; 
-    gap: 1rem; 
+    flex-direction: row;
+    gap: 1rem;
   }
 
   .inline-divSmall {
     font-size: 0.6rem;
   }
 
-  .cover {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
   .cover_item {
-    flex: 1 1 calc((100% - 0.5rem) / 6);
-    max-width: calc((100% - 0.5rem) / 6);
-    margin-bottom: 1rem;
-  }
-
-  .cover_image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 1rem;
+    flex: 1 1 16.66%;   /* still 6 across */
+    max-width: 16.66%;
   }
 }
 
@@ -278,30 +296,17 @@ h1 {
   }
 
   .inline-div-container {
-    flex-direction: column; 
-    gap: 1rem; 
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .inline-divSmall {
     font-size: 0.6rem;
   }
 
-  .cover {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
   .cover_item {
-    flex: 1 1 calc((100% - 0.5rem) / 4);
-    max-width: calc((100% - 0.5rem) / 4);
-    margin-bottom: 1rem;
-  }
-
-  .cover_image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 1rem;
+    flex: 1 1 25%;   /* 4 across */
+    max-width: 25%;
   }
 
   nav ul {
@@ -328,35 +333,33 @@ h1 {
   }
 
   .inline-div-container {
-    flex-direction: column; 
-    gap: 0.5rem; 
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .inline-divSmall {
     font-size: 0.6rem;
   }
 
-  .cover {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   .cover_item {
-    flex: 1 1 calc((100% - 0.5rem) / 3);
-    max-width: calc((100% - 0.5rem) / 3);
-    margin-bottom: 1rem;
+    flex: 1 1 50%;   /* 2 across */
+    max-width: 50%;
   }
 
   .cover_image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0.5rem; 
+    border-radius: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .cover_item {
+    flex: 1 1 100%;   /* full width */
+    max-width: 100%;
   }
 }
 
 @media (max-width: 600px) {
   .inline-div-container {
-    flex-direction: column; 
+    flex-direction: column;
   }
 }
