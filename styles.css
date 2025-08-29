@@ -202,8 +202,8 @@ h1 {
 }
 
 .cover_item {
-  flex: 1 1 calc((100% - 6rem) / 7);
-  max-width: calc((100% - 6rem) / 7);
+  flex: 1 1 calc((100% - 6rem) / 6);
+  max-width: calc((100% - 6rem) / 6);
 }
 
 .cover_image {
